@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="MnS.ActivityPlanner" data-ng-cloak>
+<head>
+    <meta charset="utf-8" />
+    <title data-ng-bind="'M&amp;S Activity Planner' + pageTitle"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <link rel="shortcut icon" type="image/png" href="Images/favicon.png" />
+
+    <!-- vendor styles -->
+    <!-- my styles -->
+    <link href="Content/out/app.min.css" rel="stylesheet" />
+    <link href="content/out/uncss.app.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="mnsAp">
+        <div class="container">
+            <div class="row ap-app-title">
+                <h1 CLASS="ap-page-title">M&amp;S Activity Planner</h1>
+            </div>
+            <div id="contentRow">
+                <div data-ng-include="'App/layout/quicklaunch.html'" data-spy="affix" data-offset-top="60" data-offset-bottom="200"></div>
+                <div id="contentBox" aria-live="polite" aria-relevant="all">
+                    <div data-ng-include="'App/layout/shell.html'"></div>
+                    <div data-ng-include="'App/layout/filter.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-ng-include="'App/layout/workingonit.html'"></div>
+
+    <script src="cordova.js"></script>
+    <script src="scripts/platformOverrides.js"></script>
+
+    <!-- vendor library(look at gulpfile.js for all vendor js) -->
+    <script src="Scripts/vendor.min.js"></script>
+
+    <!-- app library(look at gulpfile.js for all app js) -->
+    <script src="App/app.min.js"></script>
+    
+</body>
+</html>

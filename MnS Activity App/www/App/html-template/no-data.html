@@ -1,0 +1,217 @@
+﻿<html lang="en" xmlns="http://www.w3.org/1999/xhtml" data-ng-app="MnS.ActivityPlanner" class="ng-scope"><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <meta charset="utf-8">
+    <title data-ng-bind="'M&amp;S Activity Planner' + pageTitle" class="ng-binding">M&amp;S Activity Planner &gt; New</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <!-- vendor styles -->
+   
+    <!-- my styles -->
+    <link href="Content/out/app.min.css" rel="stylesheet">
+    <link href="content/out/uncss.app.min.css" rel="stylesheet">
+</head>
+<body class="modal-open">
+    
+
+    <div id="mnsAp">
+        <div class="container">
+            <div class="row ap-app-title">
+                <h1 class="ap-page-title">M&amp;S Activity Planner</h1>
+            </div>
+            <div id="contentRow">
+                <!-- ngInclude: 'App/layout/quicklaunch.html' --><div data-ng-include="'App/layout/quicklaunch.html'" data-spy="affix" data-offset-top="60" data-offset-bottom="200" class="ng-scope"><div data-ng-controller="quicklaunch as vm" id="apSideNavBox" class="ng-scope">
+    <div class="row" data-spy="affix" data-offset-top="197">
+        <!-- ngRepeat: route in vm.navRoutes --><div class="col-xs-4 ap-nav-margin ng-scope" data-ng-repeat="route in vm.navRoutes">
+            <div class="ap-nav ap-nav-selected" data-ng-class="{'ap-nav-selected': vm.isCurrent(route), 'ap-nav-unselected': !vm.isCurrent(route)}">
+                <a href="#/new?taFilters=%401%40" data-ng-bind-html="route.config.settings.content" class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode ng-binding">New</a>
+            </div>
+        </div><!-- end ngRepeat: route in vm.navRoutes --><div class="col-xs-4 ap-nav-margin ng-scope" data-ng-repeat="route in vm.navRoutes">
+            <div class="ap-nav ap-nav-unselected" data-ng-class="{'ap-nav-selected': vm.isCurrent(route), 'ap-nav-unselected': !vm.isCurrent(route)}">
+                <a href="#/on-going?taFilters=%401%40" data-ng-bind-html="route.config.settings.content" class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode ng-binding">On Going</a>
+            </div>
+        </div><!-- end ngRepeat: route in vm.navRoutes --><div class="col-xs-4 ap-nav-margin ng-scope" data-ng-repeat="route in vm.navRoutes">
+            <div class="ap-nav ap-nav-unselected" data-ng-class="{'ap-nav-selected': vm.isCurrent(route), 'ap-nav-unselected': !vm.isCurrent(route)}">
+                <a href="#/last-year?taFilters=%401%40" data-ng-bind-html="route.config.settings.content" class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode ng-binding">Last Year</a>
+            </div>
+        </div><!-- end ngRepeat: route in vm.navRoutes -->
+    </div>
+</div>
+</div>
+                <div id="contentBox" aria-live="polite" aria-relevant="all">
+                    <!-- ngInclude: 'App/layout/shell.html' --><div data-ng-include="'App/layout/shell.html'" class="ng-scope"><div data-ng-controller="shell as vm" class="ng-scope">
+    <section id="content" class="view-container">
+        <!-- ngView:  --><div data-ng-view="" class="shuffle-animation ng-scope"><div data-ng-controller="activityNew as vm" class="ng-scope">
+    <div data-ap-container="yes">
+        <!-- ngRepeat: startdate in vm.activityGroupBy -->
+    </div>
+    <!-- ngIf: vm.noData --><div class="alert alert-info ap-alert-info ng-scope" data-ng-if="vm.noData">
+        <strong>Info!</strong> No activity found for selected filters
+    </div><!-- end ngIf: vm.noData -->
+</div>
+</div>
+    </section>
+</div></div>
+                    <!-- ngInclude: 'App/layout/filter.html' --><div data-ng-include="'App/layout/filter.html'" class="ng-scope"><div data-ng-controller="apfilter as vm" id="filters" class="container ng-scope">
+    <!-- Modal -->
+    <!--<div class="modal fade" id="filterModel" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Activity Planner Filters</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <div class="panel panel-default" data-ng-repeat="tradingArea in vm.FilterTradingItems" data-ap-ta="{{tradingArea}}">
+                            <div class="panel-heading">{{tradingArea}}</div>
+                            <div class="panel-body">
+                                <div class="btn-group ap-sub-filter-group" data-toggle="buttons">
+                                    <label class="btn btn-info ap-item-filter0"
+                                           data-ng-repeat="item in vm.FilterItems | filter: vm.tradingFilter(tradingArea)"
+                                           data-ap-ta="{{tradingArea}}##{{item.ActivityTradingArea.ID}}"
+                                           data-ap-ba="{{item.ActivityBusinessArea}}##{{item.ID}}">
+                                        <input type="checkbox" autocomplete="off"
+                                               checked>
+                                        <span>{{item.ActivityBusinessArea}}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+                <div class="modal-footer highlight">
+                    <div class="filter-button-group">
+                        <button type="button" class="btn btn-default btn-responsive" data-ng-click="vm.filterData();">Apply</button>
+                        <button type="button" class="btn btn-default btn-responsive" data-ng-click="vm.shoHideFilters();">Close</button>
+                        <button type="button" class="btn btn-default btn-responsive" onclick="$('#filters label.btn.btn-info.ap-item-filter0.ng-scope.active').removeClass('active');">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="modal fade in" id="filterModel" role="dialog" style="display: block;" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Activity Planner Filters</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        </p><div class="panel panel-default">
+                            <div class="panel-heading">Treading Area</div>
+                            <div class="panel-body">
+                                <div class="btn-group ap-sub-filter-group" data-toggle="buttons">
+                                    <!-- ngRepeat: tradingArea in vm.FilterTradingItems --><label class="btn btn-info ap-item-filter0 ng-scope" data-ng-repeat="tradingArea in vm.FilterTradingItems" data-ap-ta="Comms &amp; Engagement##5" data-toggle="tooltip" title="Comms &amp; Engagement">
+                                        <input type="checkbox" autocomplete="off" checked="">
+                                        <span class="ng-binding">Comms &amp; Engagement</span>
+                                    </label><!-- end ngRepeat: tradingArea in vm.FilterTradingItems --><label class="btn btn-info ap-item-filter0 ng-scope" data-ng-repeat="tradingArea in vm.FilterTradingItems" data-ap-ta="Food &amp; Hospitality##3" data-toggle="tooltip" title="Food &amp; Hospitality">
+                                        <input type="checkbox" autocomplete="off" checked="">
+                                        <span class="ng-binding">Food &amp; Hospitality</span>
+                                    </label><!-- end ngRepeat: tradingArea in vm.FilterTradingItems --><label class="btn btn-info ap-item-filter0 ng-scope active" data-ng-repeat="tradingArea in vm.FilterTradingItems" data-ap-ta="GM##1" data-toggle="tooltip" title="GM">
+                                        <input type="checkbox" autocomplete="off" checked="">
+                                        <span class="ng-binding">GM</span>
+                                    </label><!-- end ngRepeat: tradingArea in vm.FilterTradingItems --><label class="btn btn-info ap-item-filter0 ng-scope" data-ng-repeat="tradingArea in vm.FilterTradingItems" data-ap-ta="Operation##2" data-toggle="tooltip" title="Operation">
+                                        <input type="checkbox" autocomplete="off" checked="">
+                                        <span class="ng-binding">Operation</span>
+                                    </label><!-- end ngRepeat: tradingArea in vm.FilterTradingItems --><label class="btn btn-info ap-item-filter0 ng-scope" data-ng-repeat="tradingArea in vm.FilterTradingItems" data-ap-ta="Other Activities##4" data-toggle="tooltip" title="Other Activities">
+                                        <input type="checkbox" autocomplete="off" checked="">
+                                        <span class="ng-binding">Other Activities</span>
+                                    </label><!-- end ngRepeat: tradingArea in vm.FilterTradingItems -->
+                                </div>
+                            </div>
+                        </div>
+                    <p></p>
+                </div>
+                <div class="modal-footer highlight">
+                    <div class="filter-button-group">
+                        <button type="button" class="btn btn-default btn-responsive" data-ng-click="vm.filterData();">Apply</button>
+                        <button type="button" class="btn btn-default btn-responsive" data-ng-click="vm.shoHideFilters();">Close</button>
+                        <button type="button" class="btn btn-default btn-responsive" onclick="$('#filters label.btn.btn-info.ap-item-filter0.ng-scope.active').removeClass('active');">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+<span id="showcode" data-ng-class="{'filterAnimation' : vm.openPanel}" class="ap-show-filter filterAnimation" data-ng-click="vm.shoHideFilters();" style="position: fixed; z-index: 5555;">
+        <span class="ion-funnel icon-yepcode"></span>
+        <span class="ion-close-round icon-nocode"></span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ngInclude: 'App/layout/workingonit.html' --><div data-ng-include="'App/layout/workingonit.html'" class="ng-scope"><div data-ng-controller="workingonit as vm" data-ng-show="vm.isWorking" id="ap-workingOnIt-container" class="dissolve-animation ng-scope ng-hide">
+    <div id="ap-workingOnIt-message">
+        <img src="data:image/gif;base64,R0lGODlhGAAYAJECAP///5mZmf///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgACACwAAAAAGAAYAAACQJQvAGgRDI1SyLnI5jr2YUQx10eW5hmeB6Wpkja5SZy6tYzn+g5uMhuzwW6lFtF05CkhxGQm+HKuoDPplOlDFAAAIfkEBQoAAgAsFAAGAAQABAAAAgVUYqeXUgAh+QQFCgACACwUAA4ABAAEAAACBVRip5dSACH5BAUKAAIALA4AFAAEAAQAAAIFVGKnl1IAIfkEBQoAAgAsBgAUAAQABAAAAgVUYqeXUgAh+QQFCgACACwAAA4ABAAEAAACBVRip5dSACH5BAUKAAIALAAABgAEAAQAAAIFVGKnl1IAIfkECQoAAgAsBgAAAAQABAAAAgVUYqeXUgAh+QQJCgACACwAAAAAGAAYAAACJZQvEWgADI1SyLnI5jr2YUQx10eW5omm6sq27gvH8kzX9o3ndAEAIfkECQoAAgAsAAAAABgAGAAAAkCULxFoAAyNUsi5yOY69mFEMddHluYZntyjqY3Vul2yucJo5/rOQ6lLiak0QtSEpvv1lh8l0lQsYqJHaO3gFBQAACH5BAkKAAIALAAAAAAYABgAAAJAlC8RaAAMjVLIucjmOvZhRDHXR5bmGZ7co6mN1bpdsrnCaOf6zkOpzJrYOjHV7Gf09JYlJA0lPBQ/0ym1JsUeCgAh+QQJCgACACwAAAAAGAAYAAACQJQvEWgADI1SyLnI5jr2YUQx10eW5hme3KOpjdW6XbK5wmjn+s5Dqcya2Dox1exn9PSWJeRNSSo+cR/pzOSkHgoAIfkECQoAAgAsAAAAABgAGAAAAkCULxFoAAyNUsi5yOY69mFEMddHluYZntyjqY3Vul2yucJo5/rOQ6nMmtg6MdXsZ/T0liXc6jRbOTHR15SqfEIKACH5BAkKAAIALAAAAAAYABgAAAJAlC8RaAAMjVLIucjmOvZhRDHXR5bmGZ7co6mN1bpdsrnCaOf6zkO4/JgBOz/TrHhC9pYRpNJnqURLwtdT5JFGCgAh+QQJCgACACwAAAAAGAAYAAACPpQvEWgADI1SyLnI5jr2YUQx10eW5jme3NOpTWe5Qpu6tYzn+l558tWywW4lmk/IS6KOr2UtSILOYiYiUVAAADs=">
+        <span class="ms-accentText ap-workingOnIt-accentText">
+            &nbsp;Working on it...
+        </span>
+    </div>
+</div>
+</div>
+
+
+
+<!-- vendor libraries -->
+    <script src="/_layouts/15/MicrosoftAjax.js"></script>
+    <script src="/_layouts/15/init.js"></script>
+    <script src="/_layouts/15/core.js"></script>
+    <script src="/_layouts/15/SP.UI.Controls.js"></script>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/moment.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-cookies.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/angular-resource.min.js"></script>
+    <script src="Scripts/angular-sanitize.min.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+
+    <!-- my libraries -->
+    <script src="App/util/jquery-extensions.js"></script>
+
+    <!-- app bootstrapping (used to get the app going) -->
+    <script src="App/app.js"></script>
+    <script src="App/config.js"></script>
+    <script src="App/config.angular.http.js"></script>
+    <script src="App/config.exceptionHandler.js"></script>
+    <script src="App/config.route.js"></script>
+    <script src="App/filter/dateFilter.js"></script>
+    <script src="App/filter/tradingAreaFilter.js"></script>
+
+    <!-- common modules -->
+    <script src="App/common/common.js"></script>
+    <script src="App/common/logger.js"></script>
+
+    <!-- app core -->
+    <script src="App/layout/workingonit.js"></script>
+    <script src="App/layout/quicklaunch.js"></script>
+    <script src="App/layout/shell.js"></script>
+    <script src="App/layout/filter.js"></script>
+
+    <!-- app controllers -->
+    <script src="App/activity-home/home.js"></script>
+    <script src="App/activity-new/new.js"></script>
+    <script src="App/activity-on-going/ongoing.js"></script>
+    <script src="App/activity-last-year/lastyear.js"></script>
+ 
+  
+    <!-- app services -->
+    <script src="App/services/spContext.js"></script>
+    <script src="App/services/datacontext.angular.js"></script>
+
+
+<div class="modal-backdrop fade in"></div></body></html>

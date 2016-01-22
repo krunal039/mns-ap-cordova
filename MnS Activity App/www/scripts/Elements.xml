@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Scripts">
+    <File Path="Scripts\utility\b-moment.min.js" Url="Scripts/utility/b-moment.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\utility\a-jquery-1.10.2.min.js" Url="Scripts/utility/a-jquery-1.10.2.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular\a-angular.min.js" Url="Scripts/angular/a-angular.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular\b-angular-route.min.js" Url="Scripts/angular/b-angular-route.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular\c-angular-cookies.min.js" Url="Scripts/angular/c-angular-cookies.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular\d-angular-animate.min.js" Url="Scripts/angular/d-angular-animate.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\vendor.min.js" Url="Scripts/vendor.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\angular-cache.min.js" Url="Scripts/angular-cache.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\lodash.min.js" Url="Scripts/lodash.min.js" ReplaceContent="TRUE" />
+  </Module>
+</Elements>

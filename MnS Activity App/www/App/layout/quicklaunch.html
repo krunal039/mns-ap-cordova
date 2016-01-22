@@ -1,0 +1,12 @@
+﻿<div data-ng-controller="quicklaunch as vm"
+     id="apSideNavBox">
+    <div class="row" data-spy="affix" data-offset-top="197">
+        <div class="col-xs-4 ap-nav-margin" data-ng-repeat="route in vm.navRoutes">
+            <div class="ap-nav" data-ng-class="{'ap-nav-selected': vm.isCurrent(route), 'ap-nav-unselected': !vm.isCurrent(route)}">
+                <a href="#{{route.url}}?{{query}}"
+                   data-ng-bind-html="route.config.settings.content"
+                   class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode"></a>
+            </div>
+        </div>
+    </div>
+</div>

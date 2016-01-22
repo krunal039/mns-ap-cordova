@@ -1,0 +1,1062 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" data-ng-app="MnS.ActivityPlanner" class="ng-scope"><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <meta charset="utf-8">
+    <title data-ng-bind="'M&amp;S Activity Planner' + pageTitle" class="ng-binding">M&amp;S Activity Planner &gt; Last Year</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <!-- vendor styles -->
+   
+    <!-- my styles -->
+    <link href="Content/out/app.min.css" rel="stylesheet">
+    <link href="content/out/uncss.app.min.css" rel="stylesheet">
+</head>
+<body class="modal-open">
+    
+
+    <div id="mnsAp">
+        <div class="container">
+            <div class="row ap-app-title">
+                <h1 class="ap-page-title">M&amp;S Activity Planner</h1>
+            </div>
+            <div id="contentRow">
+                <!-- ngInclude: 'App/layout/quicklaunch.html' --><div data-ng-include="'App/layout/quicklaunch.html'" data-spy="affix" data-offset-top="60" data-offset-bottom="200" class="ng-scope"><div data-ng-controller="quicklaunch as vm" id="apSideNavBox" class="ng-scope">
+    <div class="row" data-spy="affix" data-offset-top="197">
+        <!-- ngRepeat: route in vm.navRoutes --><div class="col-xs-4 ap-nav-margin ng-scope" data-ng-repeat="route in vm.navRoutes">
+            <div class="ap-nav ap-nav-unselected" data-ng-class="{'ap-nav-selected': vm.isCurrent(route), 'ap-nav-unselected': !vm.isCurrent(route)}">
+                <a href="#/new?" data-ng-bind-html="route.config.settings.content" class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode ng-binding">New</a>
+            </div>
+        </div><!-- end ngRepeat: route in vm.navRoutes --><div class="col-xs-4 ap-nav-margin ng-scope" data-ng-repeat="route in vm.navRoutes">
+            <div class="ap-nav ap-nav-unselected" data-ng-class="{'ap-nav-selected': vm.isCurrent(route), 'ap-nav-unselected': !vm.isCurrent(route)}">
+                <a href="#/on-going?" data-ng-bind-html="route.config.settings.content" class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode ng-binding">On Going</a>
+            </div>
+        </div><!-- end ngRepeat: route in vm.navRoutes --><div class="col-xs-4 ap-nav-margin ng-scope" data-ng-repeat="route in vm.navRoutes">
+            <div class="ap-nav ap-nav-selected" data-ng-class="{'ap-nav-selected': vm.isCurrent(route), 'ap-nav-unselected': !vm.isCurrent(route)}">
+                <a href="#/last-year?" data-ng-bind-html="route.config.settings.content" class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode ng-binding">Last Year</a>
+            </div>
+        </div><!-- end ngRepeat: route in vm.navRoutes -->
+    </div>
+</div>
+</div>
+                <div id="contentBox" aria-live="polite" aria-relevant="all">
+                    <!-- ngInclude: 'App/layout/shell.html' --><div data-ng-include="'App/layout/shell.html'" class="ng-scope"><div data-ng-controller="shell as vm" class="ng-scope">
+    <section id="content" class="view-container">
+        <!-- ngView:  --><div data-ng-view="" class="shuffle-animation ng-scope"><div data-ng-controller="activityLastYear as vm" class="ng-scope">
+    <div data-ap-container="yes">
+        <!-- ngRepeat: startdate in vm.activityGroupBy --><div data-ap-sub-container="yes" data-ng-repeat="startdate in vm.activityGroupBy" class="ng-scope">
+            <div class="row" data-ap-sub-container-date="&quot;2014-12-28T21:00:00.000Z&quot;">
+                <div class="col-xs-12">
+                    <div class="ap-group-title">
+                        W/C - <b class="ng-binding">28 December</b>
+                    </div>
+                </div>
+            </div>
+            <!-- ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) --><div class="row ng-scope" data-ap="yes" data-ng-repeat="item in vm.activityItems | filter: vm.dateFilter(startdate.original_date)" id="apItem9" data-apitem-id="9" data-ng-click="vm.showDetails($event)">
+                <div class="ap-item">
+                    <div class="row">
+                        <div class="col-md-1 col-xs-1">
+                            <div class="ap-item-operation">
+                                <div class="ap-item-date">
+                                    <span class="ng-binding">TH <br></span>
+                                    <span class="ng-binding">01</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="ap-item-title">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ap-item-title-header ng-binding">We don't do operation discount</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><span class="ap-item-title-duration">Duration:</span><span class="ap-item-title-d ng-binding">30 days</span></div>
+                                    <div class="col-xs-6">
+                                        <span class="ap-item-title-status">Status:</span>
+                                        <!-- ngIf: item.ActivityIsUpdated --><span data-ng-if="item.ActivityIsUpdated" class="ap-item-title-d ng-scope" style="text-decoration: underline">Updated</span><!-- end ngIf: item.ActivityIsUpdated -->
+                                        <!-- ngIf: !item.ActivityIsUpdated -->
+                                        <!-- ngIf: item.Attachments -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1" data-apitem-open="false">
+                            <div class="ap-item-title-triangle-bottom ap-item-operation" data-apitem-open="false">
+                                <span id="spanShowHide9" class="ion-arrow-up-b" aria-hidden="true">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ap-item-hide" data-ap-description="yes" style="overflow: hidden; display: block;" id="apDescriptionDiv9">
+                        <div class="col-xs-12">
+                            <div class="ap-item-description ap-item-description-operation">
+                                <p ng-bind-html="item.ActivityDescription" class="ng-binding"><p></p><ul class="dummy-content-class">
+                                    <li>
+                                        <b>Mix and Match 3 for 2:</b><br>
+                                        <b>Menswear:</b>Boys Toys &amp; Gadgets, Selected D. Gandy Underwear, Character &amp; Novelty Socks<br>
+                                        <b>Home:</b>Christams Shop<br>
+                                        <b>Kids:</b>Toys and Books<br>
+                                        <b>Womenswear:</b>Accessories, Novelty Jumpers &amp; Cardigans<br>
+                                    </li>
+                                    <li>
+                                        <b>30% off:</b>(WW: All Sleepwear, LINGERIE: selected Collections, BEAUT: selected Branded Gifts),<br>
+                                    </li>
+                                    <li>
+                                        <b>ONGOING OFFERS:</b>BOGOHP Jewellery, 30% WW Occasionwear.
+                                    </li>
+                                </ul>
+                                <p></p></p>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">Start Date : </span>01 January 2015
+                                </div>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">End Date : </span>31 January 2015
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ngIf: item.Attachments -->
+                </div>
+            </div><!-- end ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) --><div class="row ng-scope" data-ap="yes" data-ng-repeat="item in vm.activityItems | filter: vm.dateFilter(startdate.original_date)" id="apItem12" data-apitem-id="12" data-ng-click="vm.showDetails($event)">
+                <div class="ap-item">
+                    <div class="row">
+                        <div class="col-md-1 col-xs-1">
+                            <div class="ap-item-food">
+                                <div class="ap-item-date">
+                                    <span class="ng-binding">TH <br></span>
+                                    <span class="ng-binding">01</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="ap-item-title">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ap-item-title-header ng-binding">10% off for sparks memebers + 20% staff discount</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><span class="ap-item-title-duration">Duration:</span><span class="ap-item-title-d ng-binding">30 days</span></div>
+                                    <div class="col-xs-6">
+                                        <span class="ap-item-title-status">Status:</span>
+                                        <!-- ngIf: item.ActivityIsUpdated --><span data-ng-if="item.ActivityIsUpdated" class="ap-item-title-d ng-scope" style="text-decoration: underline">Updated</span><!-- end ngIf: item.ActivityIsUpdated -->
+                                        <!-- ngIf: !item.ActivityIsUpdated -->
+                                        <!-- ngIf: item.Attachments -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1" data-apitem-open="false">
+                            <div class="ap-item-title-triangle-bottom ap-item-food" data-apitem-open="false">
+                                <span id="spanShowHide12" class="ion-arrow-down-b" aria-hidden="true">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ap-item-hide" data-ap-description="yes" style="display: none; overflow: hidden;" id="apDescriptionDiv12">
+                        <div class="col-xs-12">
+                            <div class="ap-item-description ap-item-description-food">
+                                <p ng-bind-html="item.ActivityDescription" class="ng-binding"><p></p><ul class="dummy-content-class">
+                                    <li>
+                                        <b>Mix and Match 3 for 2:</b><br>
+                                        <b>Menswear:</b>Boys Toys &amp; Gadgets, Selected D. Gandy Underwear, Character &amp; Novelty Socks<br>
+                                        <b>Home:</b>Christams Shop<br>
+                                        <b>Kids:</b>Toys and Books<br>
+                                        <b>Womenswear:</b>Accessories, Novelty Jumpers &amp; Cardigans<br>
+                                    </li>
+                                    <li>
+                                        <b>30% off:</b>(WW: All Sleepwear, LINGERIE: selected Collections, BEAUT: selected Branded Gifts),<br>
+                                    </li>
+                                    <li>
+                                        <b>ONGOING OFFERS:</b>BOGOHP Jewellery, 30% WW Occasionwear.
+                                    </li>
+                                </ul>
+                                <p></p></p>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">Start Date : </span>01 January 2015
+                                </div>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">End Date : </span>31 January 2015
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ngIf: item.Attachments -->
+                </div>
+            </div><!-- end ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) --><div class="row ng-scope" data-ap="yes" data-ng-repeat="item in vm.activityItems | filter: vm.dateFilter(startdate.original_date)" id="apItem11" data-apitem-id="11" data-ng-click="vm.showDetails($event)">
+                <div class="ap-item">
+                    <div class="row">
+                        <div class="col-md-1 col-xs-1">
+                            <div class="ap-item-operation">
+                                <div class="ap-item-date">
+                                    <span class="ng-binding">TH <br></span>
+                                    <span class="ng-binding">01</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="ap-item-title">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ap-item-title-header ng-binding">Catering 20% off staff and no more friends and family</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><span class="ap-item-title-duration">Duration:</span><span class="ap-item-title-d ng-binding">30 days</span></div>
+                                    <div class="col-xs-6">
+                                        <span class="ap-item-title-status">Status:</span>
+                                        <!-- ngIf: item.ActivityIsUpdated --><span data-ng-if="item.ActivityIsUpdated" class="ap-item-title-d ng-scope" style="text-decoration: underline">Updated</span><!-- end ngIf: item.ActivityIsUpdated -->
+                                        <!-- ngIf: !item.ActivityIsUpdated -->
+                                        <!-- ngIf: item.Attachments -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1" data-apitem-open="false">
+                            <div class="ap-item-title-triangle-bottom ap-item-operation" data-apitem-open="false">
+                                <span id="spanShowHide11" class="ion-arrow-down-b" aria-hidden="true">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ap-item-hide" data-ap-description="yes" style="display: none; overflow: hidden;" id="apDescriptionDiv11">
+                        <div class="col-xs-12">
+                            <div class="ap-item-description ap-item-description-operation">
+                                <p ng-bind-html="item.ActivityDescription" class="ng-binding"><p></p><ul class="dummy-content-class">
+                                    <li>
+                                        <b>Mix and Match 3 for 2:</b><br>
+                                        <b>Menswear:</b>Boys Toys &amp; Gadgets, Selected D. Gandy Underwear, Character &amp; Novelty Socks<br>
+                                        <b>Home:</b>Christams Shop<br>
+                                        <b>Kids:</b>Toys and Books<br>
+                                        <b>Womenswear:</b>Accessories, Novelty Jumpers &amp; Cardigans<br>
+                                    </li>
+                                    <li>
+                                        <b>30% off:</b>(WW: All Sleepwear, LINGERIE: selected Collections, BEAUT: selected Branded Gifts),<br>
+                                    </li>
+                                    <li>
+                                        <b>ONGOING OFFERS:</b>BOGOHP Jewellery, 30% WW Occasionwear.
+                                    </li>
+                                </ul>
+                                <p></p></p>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">Start Date : </span>01 January 2015
+                                </div>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">End Date : </span>31 January 2015
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ngIf: item.Attachments -->
+                </div>
+            </div><!-- end ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) --><div class="row ng-scope" data-ap="yes" data-ng-repeat="item in vm.activityItems | filter: vm.dateFilter(startdate.original_date)" id="apItem10" data-apitem-id="10" data-ng-click="vm.showDetails($event)">
+                <div class="ap-item">
+                    <div class="row">
+                        <div class="col-md-1 col-xs-1">
+                            <div class="ap-item-operation">
+                                <div class="ap-item-date">
+                                    <span class="ng-binding">TH <br></span>
+                                    <span class="ng-binding">01</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="ap-item-title">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ap-item-title-header ng-binding">We don't do operation discount</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><span class="ap-item-title-duration">Duration:</span><span class="ap-item-title-d ng-binding">30 days</span></div>
+                                    <div class="col-xs-6">
+                                        <span class="ap-item-title-status">Status:</span>
+                                        <!-- ngIf: item.ActivityIsUpdated --><span data-ng-if="item.ActivityIsUpdated" class="ap-item-title-d ng-scope" style="text-decoration: underline">Updated</span><!-- end ngIf: item.ActivityIsUpdated -->
+                                        <!-- ngIf: !item.ActivityIsUpdated -->
+                                        <!-- ngIf: item.Attachments -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1" data-apitem-open="false">
+                            <div class="ap-item-title-triangle-bottom ap-item-operation" data-apitem-open="false">
+                                <span id="spanShowHide10" class="ion-arrow-down-b" aria-hidden="true">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ap-item-hide" data-ap-description="yes" style="display: none; overflow: hidden;" id="apDescriptionDiv10">
+                        <div class="col-xs-12">
+                            <div class="ap-item-description ap-item-description-operation">
+                                <p ng-bind-html="item.ActivityDescription" class="ng-binding"><p></p><ul class="dummy-content-class">
+                                    <li>
+                                        <b>Mix and Match 3 for 2:</b><br>
+                                        <b>Menswear:</b>Boys Toys &amp; Gadgets, Selected D. Gandy Underwear, Character &amp; Novelty Socks<br>
+                                        <b>Home:</b>Christams Shop<br>
+                                        <b>Kids:</b>Toys and Books<br>
+                                        <b>Womenswear:</b>Accessories, Novelty Jumpers &amp; Cardigans<br>
+                                    </li>
+                                    <li>
+                                        <b>30% off:</b>(WW: All Sleepwear, LINGERIE: selected Collections, BEAUT: selected Branded Gifts),<br>
+                                    </li>
+                                    <li>
+                                        <b>ONGOING OFFERS:</b>BOGOHP Jewellery, 30% WW Occasionwear.
+                                    </li>
+                                </ul>
+                                <p></p></p>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">Start Date : </span>01 January 2015
+                                </div>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">End Date : </span>31 January 2015
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ngIf: item.Attachments -->
+                </div>
+            </div><!-- end ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) -->
+        </div><!-- end ngRepeat: startdate in vm.activityGroupBy --><div data-ap-sub-container="yes" data-ng-repeat="startdate in vm.activityGroupBy" class="ng-scope">
+            <div class="row" data-ap-sub-container-date="&quot;2015-01-04T21:00:00.000Z&quot;">
+                <div class="col-xs-12">
+                    <div class="ap-group-title">
+                        W/C - <b class="ng-binding">04 January</b>
+                    </div>
+                </div>
+            </div>
+            <!-- ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) --><div class="row ng-scope" data-ap="yes" data-ng-repeat="item in vm.activityItems | filter: vm.dateFilter(startdate.original_date)" id="apItem15" data-apitem-id="15" data-ng-click="vm.showDetails($event)">
+                <div class="ap-item">
+                    <div class="row">
+                        <div class="col-md-1 col-xs-1">
+                            <div class="ap-item-food">
+                                <div class="ap-item-date">
+                                    <span class="ng-binding">MO <br></span>
+                                    <span class="ng-binding">05</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="ap-item-title">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ap-item-title-header ng-binding">HFOTM Food &amp; Hospitality 10% off for sparks memebers + 20% staff discount</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><span class="ap-item-title-duration">Duration:</span><span class="ap-item-title-d ng-binding">26 days</span></div>
+                                    <div class="col-xs-6">
+                                        <span class="ap-item-title-status">Status:</span>
+                                        <!-- ngIf: item.ActivityIsUpdated --><span data-ng-if="item.ActivityIsUpdated" class="ap-item-title-d ng-scope" style="text-decoration: underline">Updated</span><!-- end ngIf: item.ActivityIsUpdated -->
+                                        <!-- ngIf: !item.ActivityIsUpdated -->
+                                        <!-- ngIf: item.Attachments -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1" data-apitem-open="false">
+                            <div class="ap-item-title-triangle-bottom ap-item-food" data-apitem-open="false">
+                                <span id="spanShowHide15" class="ion-arrow-down-b" aria-hidden="true">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ap-item-hide" data-ap-description="yes" style="display: none; overflow: hidden;" id="apDescriptionDiv15">
+                        <div class="col-xs-12">
+                            <div class="ap-item-description ap-item-description-food">
+                                <p ng-bind-html="item.ActivityDescription" class="ng-binding"><p></p><ul class="dummy-content-class">
+                                    <li>
+                                        <b>Mix and Match 3 for 2:</b><br>
+                                        <b>Menswear:</b>Boys Toys &amp; Gadgets, Selected D. Gandy Underwear, Character &amp; Novelty Socks<br>
+                                        <b>Home:</b>Christams Shop<br>
+                                        <b>Kids:</b>Toys and Books<br>
+                                        <b>Womenswear:</b>Accessories, Novelty Jumpers &amp; Cardigans<br>
+                                    </li>
+                                    <li>
+                                        <b>30% off:</b>(WW: All Sleepwear, LINGERIE: selected Collections, BEAUT: selected Branded Gifts),<br>
+                                    </li>
+                                    <li>
+                                        <b>ONGOING OFFERS:</b>BOGOHP Jewellery, 30% WW Occasionwear.
+                                    </li>
+                                </ul>
+                                <p></p></p>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">Start Date : </span>05 January 2015
+                                </div>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">End Date : </span>31 January 2015
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ngIf: item.Attachments -->
+                </div>
+            </div><!-- end ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) -->
+        </div><!-- end ngRepeat: startdate in vm.activityGroupBy --><div data-ap-sub-container="yes" data-ng-repeat="startdate in vm.activityGroupBy" class="ng-scope">
+            <div class="row" data-ap-sub-container-date="&quot;2015-01-11T21:00:00.000Z&quot;">
+                <div class="col-xs-12">
+                    <div class="ap-group-title">
+                        W/C - <b class="ng-binding">11 January</b>
+                    </div>
+                </div>
+            </div>
+            <!-- ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) --><div class="row ng-scope" data-ap="yes" data-ng-repeat="item in vm.activityItems | filter: vm.dateFilter(startdate.original_date)" id="apItem14" data-apitem-id="14" data-ng-click="vm.showDetails($event)">
+                <div class="ap-item">
+                    <div class="row">
+                        <div class="col-md-1 col-xs-1">
+                            <div class="ap-item-food">
+                                <div class="ap-item-date">
+                                    <span class="ng-binding">MO <br></span>
+                                    <span class="ng-binding">12</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="ap-item-title">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ap-item-title-header ng-binding">Cafe Food &amp; Hospitality 10% off for sparks memebers + 20% staff discount</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><span class="ap-item-title-duration">Duration:</span><span class="ap-item-title-d ng-binding">19 days</span></div>
+                                    <div class="col-xs-6">
+                                        <span class="ap-item-title-status">Status:</span>
+                                        <!-- ngIf: item.ActivityIsUpdated --><span data-ng-if="item.ActivityIsUpdated" class="ap-item-title-d ng-scope" style="text-decoration: underline">Updated</span><!-- end ngIf: item.ActivityIsUpdated -->
+                                        <!-- ngIf: !item.ActivityIsUpdated -->
+                                        <!-- ngIf: item.Attachments -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1" data-apitem-open="false">
+                            <div class="ap-item-title-triangle-bottom ap-item-food" data-apitem-open="false">
+                                <span id="spanShowHide14" class="ion-arrow-down-b" aria-hidden="true">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ap-item-hide" data-ap-description="yes" style="display: none; overflow: hidden;" id="apDescriptionDiv14">
+                        <div class="col-xs-12">
+                            <div class="ap-item-description ap-item-description-food">
+                                <p ng-bind-html="item.ActivityDescription" class="ng-binding"><p></p><ul class="dummy-content-class">
+                                    <li>
+                                        <b>Mix and Match 3 for 2:</b><br>
+                                        <b>Menswear:</b>Boys Toys &amp; Gadgets, Selected D. Gandy Underwear, Character &amp; Novelty Socks<br>
+                                        <b>Home:</b>Christams Shop<br>
+                                        <b>Kids:</b>Toys and Books<br>
+                                        <b>Womenswear:</b>Accessories, Novelty Jumpers &amp; Cardigans<br>
+                                    </li>
+                                    <li>
+                                        <b>30% off:</b>(WW: All Sleepwear, LINGERIE: selected Collections, BEAUT: selected Branded Gifts),<br>
+                                    </li>
+                                    <li>
+                                        <b>ONGOING OFFERS:</b>BOGOHP Jewellery, 30% WW Occasionwear.
+                                    </li>
+                                </ul>
+                                <p></p></p>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">Start Date : </span>12 January 2015
+                                </div>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">End Date : </span>31 January 2015
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ngIf: item.Attachments -->
+                </div>
+            </div><!-- end ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) --><div class="row ng-scope" data-ap="yes" data-ng-repeat="item in vm.activityItems | filter: vm.dateFilter(startdate.original_date)" id="apItem13" data-apitem-id="13" data-ng-click="vm.showDetails($event)">
+                <div class="ap-item">
+                    <div class="row">
+                        <div class="col-md-1 col-xs-1">
+                            <div class="ap-item-food">
+                                <div class="ap-item-date">
+                                    <span class="ng-binding">TH <br></span>
+                                    <span class="ng-binding">15</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="ap-item-title">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ap-item-title-header ng-binding">10% off for sparks memebers + 20% staff discount</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><span class="ap-item-title-duration">Duration:</span><span class="ap-item-title-d ng-binding">16 days</span></div>
+                                    <div class="col-xs-6">
+                                        <span class="ap-item-title-status">Status:</span>
+                                        <!-- ngIf: item.ActivityIsUpdated --><span data-ng-if="item.ActivityIsUpdated" class="ap-item-title-d ng-scope" style="text-decoration: underline">Updated</span><!-- end ngIf: item.ActivityIsUpdated -->
+                                        <!-- ngIf: !item.ActivityIsUpdated -->
+                                        <!-- ngIf: item.Attachments -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1" data-apitem-open="false">
+                            <div class="ap-item-title-triangle-bottom ap-item-food" data-apitem-open="false">
+                                <span id="spanShowHide13" class="ion-arrow-down-b" aria-hidden="true">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ap-item-hide" data-ap-description="yes" style="display: none; overflow: hidden;" id="apDescriptionDiv13">
+                        <div class="col-xs-12">
+                            <div class="ap-item-description ap-item-description-food">
+                                <p ng-bind-html="item.ActivityDescription" class="ng-binding"><p></p><ul class="dummy-content-class">
+                                    <li>
+                                        <b>Mix and Match 3 for 2:</b><br>
+                                        <b>Menswear:</b>Boys Toys &amp; Gadgets, Selected D. Gandy Underwear, Character &amp; Novelty Socks<br>
+                                        <b>Home:</b>Christams Shop<br>
+                                        <b>Kids:</b>Toys and Books<br>
+                                        <b>Womenswear:</b>Accessories, Novelty Jumpers &amp; Cardigans<br>
+                                    </li>
+                                    <li>
+                                        <b>30% off:</b>(WW: All Sleepwear, LINGERIE: selected Collections, BEAUT: selected Branded Gifts),<br>
+                                    </li>
+                                    <li>
+                                        <b>ONGOING OFFERS:</b>BOGOHP Jewellery, 30% WW Occasionwear.
+                                    </li>
+                                </ul>
+                                <p></p></p>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">Start Date : </span>15 January 2015
+                                </div>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">End Date : </span>31 January 2015
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ngIf: item.Attachments -->
+                </div>
+            </div><!-- end ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) -->
+        </div><!-- end ngRepeat: startdate in vm.activityGroupBy --><div data-ap-sub-container="yes" data-ng-repeat="startdate in vm.activityGroupBy" class="ng-scope">
+            <div class="row" data-ap-sub-container-date="&quot;2015-02-01T21:00:00.000Z&quot;">
+                <div class="col-xs-12">
+                    <div class="ap-group-title">
+                        W/C - <b class="ng-binding">01 February</b>
+                    </div>
+                </div>
+            </div>
+            <!-- ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) --><div class="row ng-scope" data-ap="yes" data-ng-repeat="item in vm.activityItems | filter: vm.dateFilter(startdate.original_date)" id="apItem16" data-apitem-id="16" data-ng-click="vm.showDetails($event)">
+                <div class="ap-item">
+                    <div class="row">
+                        <div class="col-md-1 col-xs-1">
+                            <div class="ap-item-food">
+                                <div class="ap-item-date">
+                                    <span class="ng-binding">TH <br></span>
+                                    <span class="ng-binding">05</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="ap-item-title">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ap-item-title-header ng-binding">ISB and Food &amp; Hospitality 10% off for sparks memebers + 20% staff discount</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><span class="ap-item-title-duration">Duration:</span><span class="ap-item-title-d ng-binding">54 days</span></div>
+                                    <div class="col-xs-6">
+                                        <span class="ap-item-title-status">Status:</span>
+                                        <!-- ngIf: item.ActivityIsUpdated --><span data-ng-if="item.ActivityIsUpdated" class="ap-item-title-d ng-scope" style="text-decoration: underline">Updated</span><!-- end ngIf: item.ActivityIsUpdated -->
+                                        <!-- ngIf: !item.ActivityIsUpdated -->
+                                        <!-- ngIf: item.Attachments -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1" data-apitem-open="false">
+                            <div class="ap-item-title-triangle-bottom ap-item-food" data-apitem-open="false">
+                                <span id="spanShowHide16" class="ion-arrow-down-b" aria-hidden="true">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ap-item-hide" data-ap-description="yes" style="display: none; overflow: hidden;" id="apDescriptionDiv16">
+                        <div class="col-xs-12">
+                            <div class="ap-item-description ap-item-description-food">
+                                <p ng-bind-html="item.ActivityDescription" class="ng-binding"><p></p><ul class="dummy-content-class">
+                                    <li>
+                                        <b>Mix and Match 3 for 2:</b><br>
+                                        <b>Menswear:</b>Boys Toys &amp; Gadgets, Selected D. Gandy Underwear, Character &amp; Novelty Socks<br>
+                                        <b>Home:</b>Christams Shop<br>
+                                        <b>Kids:</b>Toys and Books<br>
+                                        <b>Womenswear:</b>Accessories, Novelty Jumpers &amp; Cardigans<br>
+                                    </li>
+                                    <li>
+                                        <b>30% off:</b>(WW: All Sleepwear, LINGERIE: selected Collections, BEAUT: selected Branded Gifts),<br>
+                                    </li>
+                                    <li>
+                                        <b>ONGOING OFFERS:</b>BOGOHP Jewellery, 30% WW Occasionwear.
+                                    </li>
+                                </ul>
+                                <p></p></p>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">Start Date : </span>05 February 2015
+                                </div>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">End Date : </span>31 March 2015
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ngIf: item.Attachments -->
+                </div>
+            </div><!-- end ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) --><div class="row ng-scope" data-ap="yes" data-ng-repeat="item in vm.activityItems | filter: vm.dateFilter(startdate.original_date)" id="apItem17" data-apitem-id="17" data-ng-click="vm.showDetails($event)">
+                <div class="ap-item">
+                    <div class="row">
+                        <div class="col-md-1 col-xs-1">
+                            <div class="ap-item-other">
+                                <div class="ap-item-date">
+                                    <span class="ng-binding">TH <br></span>
+                                    <span class="ng-binding">05</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="ap-item-title">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ap-item-title-header ng-binding">Other Activities -1 and Food &amp; Hospitality 10% off for sparks memebers + 20% staff discount</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><span class="ap-item-title-duration">Duration:</span><span class="ap-item-title-d ng-binding">23 days</span></div>
+                                    <div class="col-xs-6">
+                                        <span class="ap-item-title-status">Status:</span>
+                                        <!-- ngIf: item.ActivityIsUpdated --><span data-ng-if="item.ActivityIsUpdated" class="ap-item-title-d ng-scope" style="text-decoration: underline">Updated</span><!-- end ngIf: item.ActivityIsUpdated -->
+                                        <!-- ngIf: !item.ActivityIsUpdated -->
+                                        <!-- ngIf: item.Attachments -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1" data-apitem-open="false">
+                            <div class="ap-item-title-triangle-bottom ap-item-other" data-apitem-open="false">
+                                <span id="spanShowHide17" class="ion-arrow-down-b" aria-hidden="true">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ap-item-hide" data-ap-description="yes" style="display: none; overflow: hidden;" id="apDescriptionDiv17">
+                        <div class="col-xs-12">
+                            <div class="ap-item-description ap-item-description-other">
+                                <p ng-bind-html="item.ActivityDescription" class="ng-binding"><p></p><ul class="dummy-content-class">
+                                    <li>
+                                        <b>Mix and Match 3 for 2:</b><br>
+                                        <b>Menswear:</b>Boys Toys &amp; Gadgets, Selected D. Gandy Underwear, Character &amp; Novelty Socks<br>
+                                        <b>Home:</b>Christams Shop<br>
+                                        <b>Kids:</b>Toys and Books<br>
+                                        <b>Womenswear:</b>Accessories, Novelty Jumpers &amp; Cardigans<br>
+                                    </li>
+                                    <li>
+                                        <b>30% off:</b>(WW: All Sleepwear, LINGERIE: selected Collections, BEAUT: selected Branded Gifts),<br>
+                                    </li>
+                                    <li>
+                                        <b>ONGOING OFFERS:</b>BOGOHP Jewellery, 30% WW Occasionwear.
+                                    </li>
+                                </ul>
+                                <p></p></p>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">Start Date : </span>05 February 2015
+                                </div>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">End Date : </span>28 February 2015
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ngIf: item.Attachments -->
+                </div>
+            </div><!-- end ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) --><div class="row ng-scope" data-ap="yes" data-ng-repeat="item in vm.activityItems | filter: vm.dateFilter(startdate.original_date)" id="apItem18" data-apitem-id="18" data-ng-click="vm.showDetails($event)">
+                <div class="ap-item">
+                    <div class="row">
+                        <div class="col-md-1 col-xs-1">
+                            <div class="ap-item-food">
+                                <div class="ap-item-date">
+                                    <span class="ng-binding">TH <br></span>
+                                    <span class="ng-binding">05</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="ap-item-title">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ap-item-title-header ng-binding">Other-2 and Food &amp; Hospitality 10% off for sparks memebers + 20% staff discount</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><span class="ap-item-title-duration">Duration:</span><span class="ap-item-title-d ng-binding">23 days</span></div>
+                                    <div class="col-xs-6">
+                                        <span class="ap-item-title-status">Status:</span>
+                                        <!-- ngIf: item.ActivityIsUpdated --><span data-ng-if="item.ActivityIsUpdated" class="ap-item-title-d ng-scope" style="text-decoration: underline">Updated</span><!-- end ngIf: item.ActivityIsUpdated -->
+                                        <!-- ngIf: !item.ActivityIsUpdated -->
+                                        <!-- ngIf: item.Attachments -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1" data-apitem-open="false">
+                            <div class="ap-item-title-triangle-bottom ap-item-food" data-apitem-open="false">
+                                <span id="spanShowHide18" class="ion-arrow-down-b" aria-hidden="true">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ap-item-hide" data-ap-description="yes" style="display: none; overflow: hidden;" id="apDescriptionDiv18">
+                        <div class="col-xs-12">
+                            <div class="ap-item-description ap-item-description-food">
+                                <p ng-bind-html="item.ActivityDescription" class="ng-binding"><p></p><ul class="dummy-content-class">
+                                    <li>
+                                        <b>Mix and Match 3 for 2:</b><br>
+                                        <b>Menswear:</b>Boys Toys &amp; Gadgets, Selected D. Gandy Underwear, Character &amp; Novelty Socks<br>
+                                        <b>Home:</b>Christams Shop<br>
+                                        <b>Kids:</b>Toys and Books<br>
+                                        <b>Womenswear:</b>Accessories, Novelty Jumpers &amp; Cardigans<br>
+                                    </li>
+                                    <li>
+                                        <b>30% off:</b>(WW: All Sleepwear, LINGERIE: selected Collections, BEAUT: selected Branded Gifts),<br>
+                                    </li>
+                                    <li>
+                                        <b>ONGOING OFFERS:</b>BOGOHP Jewellery, 30% WW Occasionwear.
+                                    </li>
+                                </ul>
+                                <p></p></p>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">Start Date : </span>05 February 2015
+                                </div>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">End Date : </span>28 February 2015
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ngIf: item.Attachments -->
+                </div>
+            </div><!-- end ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) -->
+        </div><!-- end ngRepeat: startdate in vm.activityGroupBy --><div data-ap-sub-container="yes" data-ng-repeat="startdate in vm.activityGroupBy" class="ng-scope">
+            <div class="row" data-ap-sub-container-date="&quot;2015-12-13T21:00:00.000Z&quot;">
+                <div class="col-xs-12">
+                    <div class="ap-group-title">
+                        W/C - <b class="ng-binding">13 December</b>
+                    </div>
+                </div>
+            </div>
+            <!-- ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) --><div class="row ng-scope" data-ap="yes" data-ng-repeat="item in vm.activityItems | filter: vm.dateFilter(startdate.original_date)" id="apItem19" data-apitem-id="19" data-ng-click="vm.showDetails($event)">
+                <div class="ap-item">
+                    <div class="row">
+                        <div class="col-md-1 col-xs-1">
+                            <div class="ap-item-gm">
+                                <div class="ap-item-date">
+                                    <span class="ng-binding">TH <br></span>
+                                    <span class="ng-binding">17</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="ap-item-title">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ap-item-title-header ng-binding">GM All Sale most items are 50% off</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><span class="ap-item-title-duration">Duration:</span><span class="ap-item-title-d ng-binding">13 days</span></div>
+                                    <div class="col-xs-6">
+                                        <span class="ap-item-title-status">Status:</span>
+                                        <!-- ngIf: item.ActivityIsUpdated -->
+                                        <!-- ngIf: !item.ActivityIsUpdated --><span data-ng-if="!item.ActivityIsUpdated" class="ap-item-title-d ng-scope">New</span><!-- end ngIf: !item.ActivityIsUpdated -->
+                                        <!-- ngIf: item.Attachments -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1" data-apitem-open="false">
+                            <div class="ap-item-title-triangle-bottom ap-item-gm" data-apitem-open="false">
+                                <span id="spanShowHide19" class="ion-arrow-down-b" aria-hidden="true">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ap-item-hide" data-ap-description="yes" style="display: none; overflow: hidden;" id="apDescriptionDiv19">
+                        <div class="col-xs-12">
+                            <div class="ap-item-description ap-item-description-gm">
+                                <p ng-bind-html="item.ActivityDescription" class="ng-binding"><p></p><ul class="dummy-content-class">
+                                    <li>
+                                        <b>Mix and Match 3 for 2:</b><br>
+                                        <b>Menswear:</b>Boys Toys &amp; Gadgets, Selected D. Gandy Underwear, Character &amp; Novelty Socks<br>
+                                        <b>Home:</b>Christams Shop<br>
+                                        <b>Kids:</b>Toys and Books<br>
+                                        <b>Womenswear:</b>Accessories, Novelty Jumpers &amp; Cardigans<br>
+                                    </li>
+                                    <li>
+                                        <b>30% off:</b>(WW: All Sleepwear, LINGERIE: selected Collections, BEAUT: selected Branded Gifts),<br>
+                                    </li>
+                                    <li>
+                                        <b>ONGOING OFFERS:</b>BOGOHP Jewellery, 30% WW Occasionwear.
+                                    </li>
+                                </ul>
+                                <p></p></p>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">Start Date : </span>17 December 2015
+                                </div>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">End Date : </span>30 December 2015
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ngIf: item.Attachments -->
+                </div>
+            </div><!-- end ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) -->
+        </div><!-- end ngRepeat: startdate in vm.activityGroupBy --><div data-ap-sub-container="yes" data-ng-repeat="startdate in vm.activityGroupBy" class="ng-scope">
+            <div class="row" data-ap-sub-container-date="&quot;2015-12-20T21:00:00.000Z&quot;">
+                <div class="col-xs-12">
+                    <div class="ap-group-title">
+                        W/C - <b class="ng-binding">20 December</b>
+                    </div>
+                </div>
+            </div>
+            <!-- ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) --><div class="row ng-scope" data-ap="yes" data-ng-repeat="item in vm.activityItems | filter: vm.dateFilter(startdate.original_date)" id="apItem20" data-apitem-id="20" data-ng-click="vm.showDetails($event)">
+                <div class="ap-item">
+                    <div class="row">
+                        <div class="col-md-1 col-xs-1">
+                            <div class="ap-item-gm">
+                                <div class="ap-item-date">
+                                    <span class="ng-binding">SU <br></span>
+                                    <span class="ng-binding">20</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="ap-item-title">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ap-item-title-header ng-binding">Beauty Products 20% off and friends and family</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><span class="ap-item-title-duration">Duration:</span><span class="ap-item-title-d ng-binding">10 days</span></div>
+                                    <div class="col-xs-6">
+                                        <span class="ap-item-title-status">Status:</span>
+                                        <!-- ngIf: item.ActivityIsUpdated -->
+                                        <!-- ngIf: !item.ActivityIsUpdated --><span data-ng-if="!item.ActivityIsUpdated" class="ap-item-title-d ng-scope">New</span><!-- end ngIf: !item.ActivityIsUpdated -->
+                                        <!-- ngIf: item.Attachments -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1" data-apitem-open="false">
+                            <div class="ap-item-title-triangle-bottom ap-item-gm" data-apitem-open="false">
+                                <span id="spanShowHide20" class="ion-arrow-down-b" aria-hidden="true">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ap-item-hide" data-ap-description="yes" style="display: none; overflow: hidden;" id="apDescriptionDiv20">
+                        <div class="col-xs-12">
+                            <div class="ap-item-description ap-item-description-gm">
+                                <p ng-bind-html="item.ActivityDescription" class="ng-binding"><p></p><ul class="dummy-content-class">
+                                    <li>
+                                        <b>Mix and Match 3 for 2:</b><br>
+                                        <b>Menswear:</b>Boys Toys &amp; Gadgets, Selected D. Gandy Underwear, Character &amp; Novelty Socks<br>
+                                        <b>Home:</b>Christams Shop<br>
+                                        <b>Kids:</b>Toys and Books<br>
+                                        <b>Womenswear:</b>Accessories, Novelty Jumpers &amp; Cardigans<br>
+                                    </li>
+                                    <li>
+                                        <b>30% off:</b>(WW: All Sleepwear, LINGERIE: selected Collections, BEAUT: selected Branded Gifts),<br>
+                                    </li>
+                                    <li>
+                                        <b>ONGOING OFFERS:</b>BOGOHP Jewellery, 30% WW Occasionwear.
+                                    </li>
+                                </ul>
+                                <p></p></p>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">Start Date : </span>20 December 2015
+                                </div>
+                                <div class="ng-binding">
+                                    <span class="ap-item-enddate">End Date : </span>30 December 2015
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ngIf: item.Attachments -->
+                </div>
+            </div><!-- end ngRepeat: item in vm.activityItems | filter: vm.dateFilter(startdate.original_date) -->
+        </div><!-- end ngRepeat: startdate in vm.activityGroupBy -->
+    </div>
+
+    <!-- ngIf: vm.noData -->
+</div>
+</div>
+    </section>
+</div></div>
+                    <!-- ngInclude: 'App/layout/filter.html' --><div data-ng-include="'App/layout/filter.html'" class="ng-scope"><div data-ng-controller="apfilter as vm" id="filters" class="container ng-scope">
+    <!-- Modal -->
+    <!--<div class="modal fade" id="filterModel" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Activity Planner Filters</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <div class="panel panel-default" data-ng-repeat="tradingArea in vm.FilterTradingItems" data-ap-ta="{{tradingArea}}">
+                            <div class="panel-heading">{{tradingArea}}</div>
+                            <div class="panel-body">
+                                <div class="btn-group ap-sub-filter-group" data-toggle="buttons">
+                                    <label class="btn btn-info ap-item-filter0"
+                                           data-ng-repeat="item in vm.FilterItems | filter: vm.tradingFilter(tradingArea)"
+                                           data-ap-ta="{{tradingArea}}##{{item.ActivityTradingArea.ID}}"
+                                           data-ap-ba="{{item.ActivityBusinessArea}}##{{item.ID}}">
+                                        <input type="checkbox" autocomplete="off"
+                                               checked>
+                                        <span>{{item.ActivityBusinessArea}}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+                <div class="modal-footer highlight">
+                    <div class="filter-button-group">
+                        <button type="button" class="btn btn-default btn-responsive" data-ng-click="vm.filterData();">Apply</button>
+                        <button type="button" class="btn btn-default btn-responsive" data-ng-click="vm.shoHideFilters();">Close</button>
+                        <button type="button" class="btn btn-default btn-responsive" onclick="$('#filters label.btn.btn-info.ap-item-filter0.ng-scope.active').removeClass('active');">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="modal fade in" id="filterModel" role="dialog" style="display: block;" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Activity Planner Filters</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        </p><div class="panel panel-default">
+                            <div class="panel-heading">Treading Area</div>
+                            <div class="panel-body">
+                                <div class="btn-group ap-sub-filter-group" data-toggle="buttons">
+                                    <!-- ngRepeat: tradingArea in vm.FilterTradingItems --><label class="btn btn-info ap-item-filter0 ng-scope" data-ng-repeat="tradingArea in vm.FilterTradingItems" data-ap-ta="Comms &amp; Engagement##5" data-toggle="tooltip" title="Comms &amp; Engagement">
+                                        <input type="checkbox" autocomplete="off" checked="">
+                                        <span class="ng-binding">Comms &amp; Engagement</span>
+                                    </label><!-- end ngRepeat: tradingArea in vm.FilterTradingItems --><label class="btn btn-info ap-item-filter0 ng-scope" data-ng-repeat="tradingArea in vm.FilterTradingItems" data-ap-ta="Food &amp; Hospitality##3" data-toggle="tooltip" title="Food &amp; Hospitality">
+                                        <input type="checkbox" autocomplete="off" checked="">
+                                        <span class="ng-binding">Food &amp; Hospitality</span>
+                                    </label><!-- end ngRepeat: tradingArea in vm.FilterTradingItems --><label class="btn btn-info ap-item-filter0 ng-scope" data-ng-repeat="tradingArea in vm.FilterTradingItems" data-ap-ta="GM##1" data-toggle="tooltip" title="GM">
+                                        <input type="checkbox" autocomplete="off" checked="">
+                                        <span class="ng-binding">GM</span>
+                                    </label><!-- end ngRepeat: tradingArea in vm.FilterTradingItems --><label class="btn btn-info ap-item-filter0 ng-scope" data-ng-repeat="tradingArea in vm.FilterTradingItems" data-ap-ta="Operation##2" data-toggle="tooltip" title="Operation">
+                                        <input type="checkbox" autocomplete="off" checked="">
+                                        <span class="ng-binding">Operation</span>
+                                    </label><!-- end ngRepeat: tradingArea in vm.FilterTradingItems --><label class="btn btn-info ap-item-filter0 ng-scope" data-ng-repeat="tradingArea in vm.FilterTradingItems" data-ap-ta="Other Activities##4" data-toggle="tooltip" title="Other Activities">
+                                        <input type="checkbox" autocomplete="off" checked="">
+                                        <span class="ng-binding">Other Activities</span>
+                                    </label><!-- end ngRepeat: tradingArea in vm.FilterTradingItems -->
+                                </div>
+                            </div>
+                        </div>
+                    <p></p>
+                </div>
+                <div class="modal-footer highlight">
+                    <div class="filter-button-group">
+                        <button type="button" class="btn btn-default btn-responsive" data-ng-click="vm.filterData();">Apply</button>
+                        <button type="button" class="btn btn-default btn-responsive" data-ng-click="vm.shoHideFilters();">Close</button>
+                        <button type="button" class="btn btn-default btn-responsive" onclick="$('#filters label.btn.btn-info.ap-item-filter0.ng-scope.active').removeClass('active');">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+<span id="showcode" data-ng-class="{'filterAnimation' : vm.openPanel}" class="ap-show-filter filterAnimation" data-ng-click="vm.shoHideFilters();" style="position: fixed; z-index: 5555;">
+        <span class="ion-funnel icon-yepcode"></span>
+        <span class="ion-close-round icon-nocode"></span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ngInclude: 'App/layout/workingonit.html' --><div data-ng-include="'App/layout/workingonit.html'" class="ng-scope"><div data-ng-controller="workingonit as vm" data-ng-show="vm.isWorking" id="ap-workingOnIt-container" class="dissolve-animation ng-scope ng-hide">
+    <div id="ap-workingOnIt-message">
+        <img src="data:image/gif;base64,R0lGODlhGAAYAJECAP///5mZmf///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgACACwAAAAAGAAYAAACQJQvAGgRDI1SyLnI5jr2YUQx10eW5hmeB6Wpkja5SZy6tYzn+g5uMhuzwW6lFtF05CkhxGQm+HKuoDPplOlDFAAAIfkEBQoAAgAsFAAGAAQABAAAAgVUYqeXUgAh+QQFCgACACwUAA4ABAAEAAACBVRip5dSACH5BAUKAAIALA4AFAAEAAQAAAIFVGKnl1IAIfkEBQoAAgAsBgAUAAQABAAAAgVUYqeXUgAh+QQFCgACACwAAA4ABAAEAAACBVRip5dSACH5BAUKAAIALAAABgAEAAQAAAIFVGKnl1IAIfkECQoAAgAsBgAAAAQABAAAAgVUYqeXUgAh+QQJCgACACwAAAAAGAAYAAACJZQvEWgADI1SyLnI5jr2YUQx10eW5omm6sq27gvH8kzX9o3ndAEAIfkECQoAAgAsAAAAABgAGAAAAkCULxFoAAyNUsi5yOY69mFEMddHluYZntyjqY3Vul2yucJo5/rOQ6lLiak0QtSEpvv1lh8l0lQsYqJHaO3gFBQAACH5BAkKAAIALAAAAAAYABgAAAJAlC8RaAAMjVLIucjmOvZhRDHXR5bmGZ7co6mN1bpdsrnCaOf6zkOpzJrYOjHV7Gf09JYlJA0lPBQ/0ym1JsUeCgAh+QQJCgACACwAAAAAGAAYAAACQJQvEWgADI1SyLnI5jr2YUQx10eW5hme3KOpjdW6XbK5wmjn+s5Dqcya2Dox1exn9PSWJeRNSSo+cR/pzOSkHgoAIfkECQoAAgAsAAAAABgAGAAAAkCULxFoAAyNUsi5yOY69mFEMddHluYZntyjqY3Vul2yucJo5/rOQ6nMmtg6MdXsZ/T0liXc6jRbOTHR15SqfEIKACH5BAkKAAIALAAAAAAYABgAAAJAlC8RaAAMjVLIucjmOvZhRDHXR5bmGZ7co6mN1bpdsrnCaOf6zkO4/JgBOz/TrHhC9pYRpNJnqURLwtdT5JFGCgAh+QQJCgACACwAAAAAGAAYAAACPpQvEWgADI1SyLnI5jr2YUQx10eW5jme3NOpTWe5Qpu6tYzn+l558tWywW4lmk/IS6KOr2UtSILOYiYiUVAAADs=">
+        <span class="ms-accentText ap-workingOnIt-accentText">
+            &nbsp;Working on it...
+        </span>
+    </div>
+</div>
+</div>
+
+
+
+<!-- vendor libraries -->
+    <script src="/_layouts/15/MicrosoftAjax.js"></script>
+    <script src="/_layouts/15/init.js"></script>
+    <script src="/_layouts/15/core.js"></script>
+    <script src="/_layouts/15/SP.UI.Controls.js"></script>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/moment.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-cookies.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/angular-resource.min.js"></script>
+    <script src="Scripts/angular-sanitize.min.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+
+    <!-- my libraries -->
+    <script src="App/util/jquery-extensions.js"></script>
+
+    <!-- app bootstrapping (used to get the app going) -->
+    <script src="App/app.js"></script>
+    <script src="App/config.js"></script>
+    <script src="App/config.angular.http.js"></script>
+    <script src="App/config.exceptionHandler.js"></script>
+    <script src="App/config.route.js"></script>
+    <script src="App/filter/dateFilter.js"></script>
+    <script src="App/filter/tradingAreaFilter.js"></script>
+
+    <!-- common modules -->
+    <script src="App/common/common.js"></script>
+    <script src="App/common/logger.js"></script>
+
+    <!-- app core -->
+    <script src="App/layout/workingonit.js"></script>
+    <script src="App/layout/quicklaunch.js"></script>
+    <script src="App/layout/shell.js"></script>
+    <script src="App/layout/filter.js"></script>
+
+    <!-- app controllers -->
+    <script src="App/activity-home/home.js"></script>
+    <script src="App/activity-new/new.js"></script>
+    <script src="App/activity-on-going/ongoing.js"></script>
+    <script src="App/activity-last-year/lastyear.js"></script>
+ 
+  
+    <!-- app services -->
+    <script src="App/services/spContext.js"></script>
+    <script src="App/services/datacontext.angular.js"></script>
+
+
+<div class="modal-backdrop fade in"></div></body></html>

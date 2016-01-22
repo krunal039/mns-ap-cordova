@@ -1,0 +1,90 @@
+﻿<div data-ng-controller="apfilter as vm" id="filters" class="container">
+    <!-- Modal -->
+    <!--<div class="modal fade" id="filterModel" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Activity Planner Filters</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <div class="panel panel-default" data-ng-repeat="tradingArea in vm.FilterTradingItems" data-ap-ta="{{tradingArea}}">
+                            <div class="panel-heading">{{tradingArea}}</div>
+                            <div class="panel-body">
+                                <div class="btn-group ap-sub-filter-group" data-toggle="buttons">
+                                    <label class="btn btn-info ap-item-filter0"
+                                           data-ng-repeat="item in vm.FilterItems | filter: vm.tradingFilter(tradingArea)"
+                                           data-ap-ta="{{tradingArea}}##{{item.ActivityTradingArea.ID}}"
+                                           data-ap-ba="{{item.ActivityBusinessArea}}##{{item.ID}}">
+                                        <input type="checkbox" autocomplete="off"
+                                               checked>
+                                        <span>{{item.ActivityBusinessArea}}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+                <div class="modal-footer highlight">
+                    <div class="filter-button-group">
+                        <button type="button" class="btn btn-default btn-responsive" data-ng-click="vm.filterData();">Apply</button>
+                        <button type="button" class="btn btn-default btn-responsive" data-ng-click="vm.shoHideFilters();">Close</button>
+                        <button type="button" class="btn btn-default btn-responsive" onclick="$('#filters label.btn.btn-info.ap-item-filter0.ng-scope.active').removeClass('active');">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="modal fade" id="filterModel" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Activity Planner Filters</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Treading Area</div>
+                            <div class="panel-body">
+                                <div class="btn-group ap-sub-filter-group" data-toggle="buttons">
+                                    <label class="btn btn-info ap-item-filter0"
+                                           data-ng-repeat="tradingArea in vm.FilterTradingItems"
+                                           data-ap-ta="{{tradingArea.title}}##{{tradingArea.id}}"
+                                           data-toggle="tooltip" title={{tradingArea.title}}>
+                                        <input type="checkbox" autocomplete="off"
+                                               checked>
+                                        <span>{{tradingArea.title}}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+                <div class="modal-footer highlight">
+                    <div class="filter-button-group">
+                        <button type="button" class="btn btn-default btn-responsive" data-ng-click="vm.filterData();">Apply</button>
+                        <button type="button" class="btn btn-default btn-responsive" data-ng-click="vm.shoHideFilters();">Close</button>
+                        <button type="button" class="btn btn-default btn-responsive" onclick="$('#filters label.btn.btn-info.ap-item-filter0.ng-scope.active').removeClass('active');">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+<span id="showcode" data-ng-class="{'filterAnimation' : vm.openPanel}" class="ap-show-filter" data-ng-click="vm.shoHideFilters();" style="position: fixed; z-index: 5555">
+        <span class="ion-funnel icon-yepcode"></span>
+        <span class="ion-close-round icon-nocode"></span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,94 @@
+﻿<div data-ng-controller="activityLastYear as vm">
+    <div data-ap-container="yes">
+        <div data-ap-sub-container="yes"
+             data-ng-repeat="startdate in vm.activityGroupBy">
+            <div class="row" data-ap-sub-container-date="{{startdate.original_date}}">
+                <div class="col-xs-12">
+                    <div class="ap-group-title">
+                        W/C - <b>{{startdate.main_title_date}}</b>
+                    </div>
+                </div>
+            </div>
+            <div class="row" data-ap="yes"
+                 data-ng-repeat="item in vm.activityItems | filter: vm.dateFilter(startdate.original_date)"
+                 id="apItem{{item.ID}}"
+                 data-apitem-id="{{item.ID}}"
+                 data-ng-click="vm.showDetails($event)">
+                <div class="ap-item">
+                    <div class="row">
+                        <div class="col-md-1 col-xs-1">
+                            <div class="ap-item-{{item.ActivityTradingArea.ActivityTradingArea | tradingAreaSubsection}}">
+                                <div class="ap-item-date">
+                                    <span>{{item.ActivityStartDate | dateFilter:1:true}} <br /></span>
+                                    <span>{{item.ActivityStartDate | dateFilter:2:false}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="ap-item-title">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ap-item-title-header">{{item.ActivityTitle}}</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <span class="ap-item-title-status">Status:</span>
+                                        <span data-ng-if="item.ActivityIsUpdated" class="ap-item-title-d" style="text-decoration: underline">Updated</span>
+                                        <span data-ng-if="!item.ActivityIsUpdated" class="ap-item-title-d">New</span>
+                                    </div>
+                                    <div class="col-xs-6"><span class="ap-item-title-duration">Duration:</span><span class="ap-item-title-d">{{item.ActivityDuration | number:0}} days</span></div>
+                                    <div data-ng-if="item.Attachments" class="ap-item-attachment-count pull-right">
+                                        <span class="ion-paperclip"></span>&nbsp;({{(item.AttachmentFiles.results.length)}})
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1"
+                             data-apitem-open="false">
+                            <div class="ap-item-title-triangle-bottom ap-item-{{item.ActivityTradingArea.ActivityTradingArea | tradingAreaSubsection}}"
+                                 data-apitem-open="false">
+                                <span id="spanShowHide{{item.ID}}" class="ion-arrow-down-b" aria-hidden="true">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ap-item-hide" data-ap-description="yes" style="display: none"
+                         id="apDescriptionDiv{{item.ID}}">
+                        <div class="col-xs-12">
+                            <div class="ap-item-description ap-item-description-{{item.ActivityTradingArea.ActivityTradingArea | tradingAreaSubsection}}">
+                                <p ng-bind-html="item.ActivityDescription">
+
+                                </p>
+                                <div>
+                                    <span class="ap-item-enddate">Start Date : </span>{{item.ActivityStartDate | dateFilter:3:false}}
+                                </div>
+                                <div>
+                                    <span class="ap-item-enddate">End Date : </span>{{item.ActivityEndDate | dateFilter:3:false}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ap-item-hide" data-ap-attachment="yes" style="display: none"
+                         data-ng-if="item.Attachments"
+                         id="apAttachmentDiv{{item.ID}}">
+                        <div class="col-xs-12">
+                            <span class="ap-item-attachment-title ap-item-{{item.ActivityTradingArea.ActivityTradingArea | tradingAreaSubsection}}">ATTACHMENTS</span>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="ap-item-attachment-body ap-item-description-{{item.ActivityTradingArea.ActivityTradingArea | tradingAreaSubsection}}">
+                                <ol class="ap-item-attachment-body-ol">
+                                    <li data-ng-repeat="attachment in item.AttachmentFiles.results"><a data-item-attachment="true" class="ap-attachment-links" href="{{vm.siteHost}}/_layouts/15/WopiFrame.aspx?sourcedoc={{attachment.ServerRelativeUrl}}&action=default.">{{attachment.FileName}}</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-info ap-alert-info" data-ng-if="vm.noData">
+        <strong>Info!</strong> No activity found for selected filters
+    </div>
+</div>

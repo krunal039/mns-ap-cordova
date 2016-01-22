@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Content">
+    <File Path="Content\c-App.css" Url="Content/c-App.css" ReplaceContent="TRUE" />
+    <File Path="Content\a-bootstrap.min.css" Url="Content/a-bootstrap.min.css" ReplaceContent="TRUE" />
+    <File Path="Content\fonts\ionicons.eot" Url="Content/fonts/ionicons.eot" ReplaceContent="TRUE" />
+    <File Path="Content\fonts\ionicons.svg" Url="Content/fonts/ionicons.svg" ReplaceContent="TRUE" />
+    <File Path="Content\fonts\ionicons.ttf" Url="Content/fonts/ionicons.ttf" ReplaceContent="TRUE" />
+    <File Path="Content\fonts\ionicons.woff" Url="Content/fonts/ionicons.woff" ReplaceContent="TRUE" />
+    <File Path="Content\b-ionicons.min.css" Url="Content/b-ionicons.min.css" ReplaceContent="TRUE" />
+    <File Path="Content\out\app.min.css" Url="Content/out/app.min.css" ReplaceContent="TRUE" />
+    <File Path="Content\out\uncss.app.min.css" Url="Content/out/uncss.app.min.css" ReplaceContent="TRUE" />
+  </Module>
+</Elements>
